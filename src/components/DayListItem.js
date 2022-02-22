@@ -3,15 +3,7 @@ import "components/DayListItem.scss";
 import classNames from "classnames";
 
 export function formatSpots(number) {
-  // let spotFormat = [];
-  //   if(props.spots > 1)  {
-  //     spotFormat = `${props.spots} spots remaining`;
-  //   } else if (props.spots === 1) {
-  //     spotFormat = `${props.spots} spot remaining`
-  //   } else if (props.spots === 0) {
-  //     spotFormat = `no spots remaining`
-  //   }
-  //   return spotFormat;
+
 if (number === 0) return "no spots remaining";
 if (number === 1) return "1 spot remaining";
 return `${number} spots remaining`;
