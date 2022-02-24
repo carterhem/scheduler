@@ -14,6 +14,7 @@ import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
+import { Fragment } from "react";
 import "index.scss";
 
 
@@ -156,3 +157,10 @@ storiesOf("Button", module)
         .add("Error", () => <Error message={"Could not delete appointment."} onClose={action("onClose")} />)
         .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
         .add("Edit", () => <Form student={"Carter"} interviewer={2} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
+
+        .add("Appointment Empty", () => (
+          <Fragment>
+            <Appointment id={1} time="4pm" />
+            <Appointment time="5pm" />
+          </Fragment>
+        ))
