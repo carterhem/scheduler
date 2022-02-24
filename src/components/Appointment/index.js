@@ -4,21 +4,21 @@ import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 
+
+
+
+
 export default function Appointment(props) {
-  
+
   return (
-    <Fragment>
-      <Header time={props.time} />
+    <div className="appointment" >
+      <Header time={props.time}  />
       {props.interview ? (
-        <Fragment>
-          <Show student={"Lydia Miller Jones"} interviewer={"Sylvia Palmer"}/>
-        </Fragment>
+          <Show student={props.interview.student} interviewer={props.interview.interviewer.name}/>
       ) : (
-        <Fragment>
           <Empty />
-        </Fragment>
       )}
-    </Fragment>
+    </div>
   );
 
   // if (!props.time) return <article className="appointment" >No Appointments</article>
