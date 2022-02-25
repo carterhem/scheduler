@@ -56,11 +56,18 @@ export default function Application(props) {
     // appointments: {}
   })
   // console.log(days);
-  useEffect(() => {
-    axios.get("/api/days").then(response => setDays(response.data));
-  }, []);
 
-const setDays = (days) => setState(prev => ({...prev, days}))
+  useEffect(() => {
+    axios.get("/api/days").then(response => {
+      // console.log(response)
+      // console.log(typeof(response.data))
+      setState((prev) => ({
+        ...prev, 
+        days: response.data
+      }))
+    } )
+  }, []);
+const setDays = (day) => setState(prev => ({...prev, day}))
 
   return (
     <main className="layout">

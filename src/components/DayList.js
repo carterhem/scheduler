@@ -3,13 +3,11 @@ import DayListItem from "./DayListItem";
 
 export default function DayList(props) {
  console.log("props", props)
- console.log("props.days", props.days)
- if (!props.days) {
+//  console.log("props.days", props.days)
+ const {days} = props;
+//  console.log("days", days)
 
- } else {
-   
- }
-const days = props.days.map(day => {
+const singleDay = days.map(day => {
   return (
     <DayListItem 
     key={day.id} 
@@ -19,7 +17,7 @@ const days = props.days.map(day => {
     setDay={props.onChange} />
   )
  })
- return <ul>{days}</ul> 
+ return <ul>{singleDay}</ul> 
 
 
 
