@@ -1,5 +1,5 @@
 
-export function getAppointmentsForDay(state, day) {
+export default function getAppointmentsForDay(state, day) {
 let dayAppointments = [];
 const foundDay = state.days.find(element => element.name === day);
 // console.log("day", day)
