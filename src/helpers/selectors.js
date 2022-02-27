@@ -16,6 +16,24 @@ function getAppointmentsForDay(state, day) {
   return dayAppointments;
 }
 
+function getInterviewersForDay(state, day) {
+  let dayInterviewers = [];
+  const foundDay = state.days.find((element) => element.name === day);
+  // console.log("day", day)
+  // console.log("state", state)
+  // console.log("foundDay", foundDay)
+
+  if (foundDay === undefined) {
+    return dayInterviewers;
+  } else {
+    dayInterviewers = foundDay.interviewers.map(
+      (element) => state.interviewers[element]
+    );
+  }
+
+  return dayInterviewers;
+}
+
 function getInterview(state, interview) {
   if (!interview) {
     return null;
@@ -32,4 +50,4 @@ function getInterview(state, interview) {
   // console.log("foundInterview", foundInterview)
 }
 
-export { getAppointmentsForDay, getInterview };
+export { getAppointmentsForDay, getInterviewersForDay, getInterview };
