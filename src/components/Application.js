@@ -5,7 +5,7 @@ import "components/Application.scss";
 import Appointment from "components/Appointment";
 import axios from "axios";
 import { useEffect } from "react";
-import {getAppointmentsForDay} from "../helpers/selectors";
+import { getAppointmentsForDay } from "../helpers/selectors";
 import { getInterview } from "../helpers/selectors";
 import { getInterviewersForDay } from "../helpers/selectors";
 
@@ -49,6 +49,29 @@ export default function Application(props) {
   // const [days, setDays] = useState([]);
   // const [day, setDay] = useState("Monday")
   // const [appointments, setAppointments] = useState({})
+
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+
+    return axios
+      .put(`/api/appointments/${appointment.id}`, {
+        interview,
+      })
+      .then(() => {
+        setState({
+          ...state,
+          appointments,
+        });
+      });
+  }
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -56,6 +79,10 @@ export default function Application(props) {
     interviewers: {},
   });
   // console.log(days);
+
+  useEffect(() => {
+    console.log("state", state);
+  }, [state]);
 
   const setDay = (day) => setState((prev) => ({ ...prev, day }));
 
@@ -80,6 +107,7 @@ export default function Application(props) {
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const allAppointments = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
+    console.log("interview", interview);
     const interviewers = getInterviewersForDay(state, state.day);
     return (
       <Appointment
@@ -88,10 +116,12 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   });
   console.log("daily", dailyAppointments);
+
   // useEffect(() => {
   //   axios.get("/api/days").then(response => {
   //     // console.log(response)
