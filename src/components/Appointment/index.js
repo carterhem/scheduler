@@ -5,6 +5,7 @@ import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
 import Status from "./Status";
+import Confirm from "./Confirm";
 import useVisualMode from "hooks/useVisualMode";
 import { useEffect } from "react";
 import { action } from "@storybook/addon-actions";
@@ -16,6 +17,8 @@ export default function Appointment(props) {
   const SHOW = "SHOW";
   const CREATE = "CREATE";
   const SAVING = "SAVING";
+  const REMOVING = "REMOVING";
+  const CONFIRM = "CONFIRM";
   const { mode, transition, back } = useVisualMode(
     props.interview? SHOW : EMPTY
   );
@@ -31,6 +34,15 @@ export default function Appointment(props) {
      transition(SHOW)
     })
   }
+
+function remove(name, interviewer) {
+  transition(REMOVING)
+props.cancelInterview(props.id)
+.then(() => {
+  transition(EMPTY)
+})
+}
+
 useEffect(() => {
   console.log("mode is now create", mode);
 
@@ -44,10 +56,13 @@ useEffect(() => {
        <Show 
        student={props.interview.student}
        interviewer={props.interview.interviewer}
+       onDelete={() => transition(CONFIRM)}
        />
      )}
      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back(EMPTY)} onSave={save} />}
-     {mode === SAVING && <Status />}
+     {mode === SAVING && <Status message="Saving" />}
+     {mode === REMOVING && <Status message="Deleting" /> }
+     {mode === CONFIRM && <Confirm message="Are you sure you would like to delete?" onConfirm={remove} onCancel={() => back(SHOW)}/>}
     </div>
   );
 
