@@ -50,10 +50,10 @@ props
 }).catch(error => transition(ERROR_DELETE, true));
 }
 
-useEffect(() => {
-  console.log("mode is now create", mode);
+// useEffect(() => {
+//   console.log("mode is now create", mode);
 
-}, [mode])
+// }, [mode])
   return (
     <div className="appointment" >
       <Header time={props.time}  />
