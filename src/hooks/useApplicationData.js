@@ -13,6 +13,7 @@ export default function useApplicationData(props) {
   // }
 
   function updateSpots(newAppointments) {
+    
 return state.days.map((eachDay) => {
   let freeSpots = 0;
 
@@ -37,9 +38,10 @@ return state.days.map((eachDay) => {
       ...state.appointments,
       [id]: appointment,
     };
-    console.log("bookInterview appointments", appointments);
-
+    // console.log("bookInterview appointments", appointments);
+    console.log("pre update book Spots", state)
     const days = updateSpots(appointments);
+    console.log("post update book spots", state)
 
     //at this point all info is already in appointments - client already, not sent to server
 
@@ -77,7 +79,9 @@ return state.days.map((eachDay) => {
     };
     console.log("cancelInterview appointments", appointments);
     //appointments is the list of all appointments
+    console.log("pre update cancel Spots", state)
     const days = updateSpots(appointments);
+    console.log("pre update cancel Spots", state)
 
     return axios
       .delete(`/api/appointments/${appointment.id}`)
