@@ -4,8 +4,7 @@ import InterviewerListItem from "./InterviewerListItem";
 import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
-  console.log("props", props)
-  
+  //when Show or edit is rendered, this is the list of interviewers that are available to select
   const interviewers = props.interviewers.map(interviewer => {
     return(
       <InterviewerListItem
@@ -23,21 +22,11 @@ export default function InterviewerList(props) {
     <h4 className="interviewers__header text--light">Interviewer</h4>
     <ul className="interviewers__list">{interviewers}</ul>
     </section>
-
+//interviewer is label and interviewwers is the list of interviewers
   )
   
 }
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 }
-
-
-// export default function InterviewerList(props) {
-//   return (
-//     <section className="interviewers">
-//       <h4 className="interviewers__header text--light">Interviewer</h4>
-//       <ul className="interviewers__list"></ul>
-//     </section>
-//   );
-// }
-
+//confirming that the InterviewerList is in fact an array

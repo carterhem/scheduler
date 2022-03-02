@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./styles.scss";
 import Header from "./Header";
 import Show from "./Show";
@@ -8,8 +8,7 @@ import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
 import useVisualMode from "hooks/useVisualMode";
-import { useEffect } from "react";
-import { action } from "@storybook/addon-actions";
+
 
 
 
@@ -50,10 +49,7 @@ props
 }).catch(error => transition(ERROR_DELETE, true));
 }
 
-// useEffect(() => {
-//   console.log("mode is now create", mode);
 
-// }, [mode])
   return (
     <div className="appointment" >
       <Header time={props.time}  />
@@ -77,12 +73,5 @@ props
     </div>
   );
 
-//   {props.interview ? (
-//     <Show student={props.interview.student} interviewer={props.interview.interviewer.name}/>
-// ) : (
-//     <Empty  />
-// )}
 
-  // if (!props.time) return <article className="appointment" >No Appointments</article>
-  //   if (props.time) return <article className="appointment" >Appointment at {props.time}</article>
 }

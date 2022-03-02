@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 export default function InterviewerListItem(props) {
 const interviewerClass = classNames("interviewers__item", {"interviewers__item--selected": props.selected})
-
+//if intervieweritem is selected - change class to selected
  return (
   <li className={interviewerClass} onClick={props.setInterviewer}>
     <img
@@ -17,14 +17,3 @@ const interviewerClass = classNames("interviewers__item", {"interviewers__item--
 );
  
 }
-
-// return (
-//   <li className={interviewerClass}>
-//   <img
-//     className="interviewers__item-image"
-//     src="https://i.imgur.com/LpaY82x.png"
-//     alt="Sylvia Palmer"
-//   />
-//   Sylvia Palmer
-// </li>
-// )

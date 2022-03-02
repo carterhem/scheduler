@@ -1,9 +1,7 @@
 function getAppointmentsForDay(state, day) {
+  //written to find the appointments for the selected day on the left hand side menu
   let dayAppointments = [];
   const foundDay = state.days.find((element) => element.name === day);
-  // console.log("day", day)
-  // console.log("state", state)
-  // console.log("foundDay", foundDay)
 
   if (foundDay === undefined) {
     return dayAppointments;
@@ -17,11 +15,10 @@ function getAppointmentsForDay(state, day) {
 }
 
 function getInterviewersForDay(state, day) {
+  //identifies the interviewers for the day selected on left hand side menu
   let dayInterviewers = [];
   const foundDay = state.days.find((element) => element.name === day);
-  // console.log("day", day)
-  // console.log("state", state)
-  // console.log("foundDay", foundDay)
+
 
   if (foundDay === undefined) {
     return dayInterviewers;
@@ -35,6 +32,7 @@ function getInterviewersForDay(state, day) {
 }
 
 function getInterview(state, interview) {
+  //identifies the interviews for the day selected on left hand side menu
   if (!interview) {
     return null;
   } else {
@@ -44,10 +42,6 @@ function getInterview(state, interview) {
     };
   }
 
-  // console.log("state.appointments", state.appointments)
-
-  // console.log("interview", interview)
-  // console.log("foundInterview", foundInterview)
 }
 
 export { getAppointmentsForDay, getInterviewersForDay, getInterview };

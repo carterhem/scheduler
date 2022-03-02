@@ -42,7 +42,7 @@ function validate() {
     <section className="appointment__validation">{error}</section>
     <InterviewerList 
     interviewers={props.interviewers} onChange={setInterviewer} value={interviewer}
-  // interviewers={props.interviewers} interviewer={interviewer} setInterviewer={setInterviewer}
+
     />
   </section>
   <section className="appointment__card-right">

@@ -7,7 +7,6 @@ export default function useVisualMode(initial) {
   const transition = (newMode, replace = false) => {
     //if replace is not true, have a history
     //if replace is true, have no history and be back to original state
-    console.log("newMode", newMode);
    if(!replace) {
     setMode(newMode);
     setHistory([...history,newMode]);
@@ -35,6 +34,5 @@ export default function useVisualMode(initial) {
 
   };
 
-console.log("useVisualMode mode", mode)
 return {mode, transition, back};
 };
