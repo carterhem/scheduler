@@ -21,7 +21,7 @@ function validate() {
     return;
   }
   if (interviewer === null) {
-    setError("Interviewer name cannot be blank");
+    setError("An Interviewer must be selected");
     return;
   }
   
